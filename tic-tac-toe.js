@@ -10,15 +10,22 @@ let myArray =[]
         myArray[0]= "O"  
     }
 }
+function boardhover(e){
+    e.classList.add("hover")
+}
+function boardhoverout(e){
+    e.classList.remove("hover")
+}
 window.onload = function (){
-        let myDiv = document.getElementById("board").children;
+    let myDiv = document.getElementById("board").children;
      
-        for (let i = 0; i < myDiv.length; i++){
-             myDiv[i].setAttribute("class","square")
-             myDiv[i].setAttribute("onclick","handleClick(this)")
-         }
-
-        console.log(myDiv);
+    for (let i = 0; i < myDiv.length; i++){
+        myDiv[i].setAttribute("class","square")
+        myDiv[i].setAttribute("onclick","handleClick(this)")
+        myDiv[i].setAttribute("onmouseover","boardhover(this)")
+        myDiv[i].setAttribute("onmouseout","boardhoverout(this)")
+    }
+     console.log(myDiv);
     
 }
 
