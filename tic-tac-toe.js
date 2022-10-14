@@ -97,10 +97,24 @@ function boardhover(e){
 function boardhoverout(e){
     e.classList.remove("hover")
 }
+function newGame(){
+    let myDiv = document.getElementById("board").children
+    for(let i = 0 ;i < myDiv.length;i++){
+        myDiv[i].classList.remove("X")
+        myDiv[i].classList.remove("O")
+        myDiv[i].textContent = ""
+    }
+    win= false
+    myArray = []
+    let message = document.getElementById("status")
+    message.textContent = "Move your mouse over a square and click to play an X or an O."
+    message.classList.remove("you-won")
+}
 
 window.onload = function (){
     let myDiv = document.getElementById("board").children;
-     
+    let restart = document.getElementsByClassName("btn")
+
     for (let i = 0; i < myDiv.length; i++){
         myDiv[i].setAttribute("class","square")
         myDiv[i].setAttribute("onclick","handleClick(this)")
@@ -135,6 +149,7 @@ window.onload = function (){
             diagonal_pos[myDiv[i].id] = 1
         }
     }
-     console.log(myDiv);
+    restart[0].addEventListener("click",newGame)
+    console.log(restart)
 }
 
